@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>UoM Parking Management</title>
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- PWA Meta Tags -->
+    <meta name="application-name" content="UoM Parking">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="UoM Parking">
+    <meta name="description" content="University of Moratuwa Parking Management System">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="msapplication-TileColor" content="#1a2980">
+    <meta name="msapplication-tap-highlight" content="no">
+    <meta name="theme-color" content="#1a2980">
+    
+    <!-- iOS Icons -->
+    <link rel="apple-touch-icon" href="https://img.icons8.com/color/192/000000/parking.png">
+    
+    <!-- Manifest -->
+    <link rel="manifest" href="manifest.json">
+</head>
+<body>
+    <!-- Mobile App Container -->
+    <div class="mobile-container">
+        <!-- Header with hamburger and home buttons -->
+        <div class="mobile-header">
+            <div class="header-left">
+                <button class="menu-button" id="menuButton">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+            
+            <div class="header-center">
+                <h1 class="app-title">UoM Parking</h1>
+            </div>
+            
+            <div class="header-right">
+                <button class="home-button" id="homeButton">
+                    <i class="fas fa-home"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Side Navigation Menu -->
+        <div class="side-menu" id="sideMenu">
+            <div class="menu-header">
+                <div class="user-profile">
+                    <div class="profile-avatar" id="profileAvatar">U</div>
+                    <div class="profile-info">
+                        <h3 id="profileName">Guest User</h3>
+                        <p id="profileRole">Select a role</p>
+                    </div>
+                </div>
+                <button class="close-menu" id="closeMenu">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            
+            <div class="menu-items">
+                <a href="#" class="menu-item" id="menuHome">
+                    <i class="fas fa-home"></i>
+                    <span>Home</span>
+                </a>
+                
+                <a href="#" class="menu-item" id="menuAccount">
+                    <i class="fas fa-user"></i>
+                    <span>Account Details</span>
+                </a>
+                
+                <a href="#" class="menu-item" id="menuParking">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>Parking Status</span>
+                </a>
+                
+                <div class="menu-divider"></div>
+                
+                <a href="#" class="menu-item" id="menuAbout">
+                    <i class="fas fa-info-circle"></i>
+                    <span>About System</span>
+                </a>
+                
+                <a href="#" class="menu-item" id="menuHelp">
+                    <i class="fas fa-question-circle"></i>
+                    <span>Help</span>
+                </a>
+                
+                <div class="menu-divider"></div>
+                
+                <a href="#" class="menu-item logout" id="menuLogout">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span>Logout</span>
+                </a>
+            </div>
+            
+            <div class="menu-footer">
+                <p>UoM Parking Management v2.0</p>
+            </div>
+        </div>
+        
+        <!-- Overlay for menu -->
+        <div class="menu-overlay" id="menuOverlay"></div>
+
+        <!-- Main Content Area -->
+        <div class="mobile-content" id="mobileContent">
+            <!-- Welcome/Role Selection Page -->
+            <div id="welcomePage" class="page active">
+                <div class="welcome-content">
+                    <h2>Welcome to UoM Parking System</h2>
+                    <p class="welcome-subtitle">Select your role to continue</p>
+                    
+                    <div class="role-selection">
+                        <div class="role-card lecturer" id="selectLecturer">
+                            <div class="role-icon">
+                                <i class="fas fa-chalkboard-teacher"></i>
+                            </div>
+                            <h3>Lecturer</h3>
+                            <p>Get QR code for parking access</p>
+                            <div class="role-action">
+                                <span>Continue as Lecturer</span>
+                                <i class="fas fa-arrow-right"></i>
+                            </div>
+                        </div>
+                        
+                        <div class="role-card security" id="selectSecurity">
+                            <div class="role-icon">
+                                <i class="fas fa-shield-alt"></i>
+                            </div>
+                            <h3>Security Officer</h3>
+                            <p>Scan QR codes & manage parking</p>
+                            <div class="role-action">
+                                <span>Continue as Security</span>
+                                <i class="fas fa-arrow-right"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Lecturer Signup Page -->
+            <div id="lecturerSignupPage" class="page">
+                <div class="page-header">
+                    <h2>Lecturer Registration</h2>
+                    <p>Create your lecturer parking account</p>
+                </div>
+                
+                <div class="form-container">
+                    <div class="form-group">
+                        <label for="lecturerName">Full Name</label>
+                        <input type="text" id="lecturerName" placeholder="Enter your full name">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="lecturerDept">Department</label>
+                        <select id="lecturerDept">
+                            <option value="">Select Department</option>
+                            <option value="Computer Science & Engineering">Computer Science & Engineering</option>
+                            <option value="Electrical Engineering">Electrical Engineering</option>
+                            <option value="Civil Engineering">Civil Engineering</option>
+                            <option value="Mechanical Engineering">Mechanical Engineering</option>
+                            <option value="Chemical & Process Engineering">Chemical & Process Engineering</option>
+                            <option value="Materials Science & Engineering">Materials Science & Engineering</option>
+                            <option value="Earth Resources Engineering">Earth Resources Engineering</option>
+                            <option value="Architecture">Architecture</option>
+                            <option value="Town & Country Planning">Town & Country Planning</option>
+                            <option value="Quantity Surveying">Quantity Surveying</option>
+                            <option value="Mathematics">Mathematics</option>
+                            <option value="Physics">Physics</option>
+                            <option value="Chemistry">Chemistry</option>
+                            <option value="Management of Technology">Management of Technology</option>
+                            <option value="Transport & Logistics Management">Transport & Logistics Management</option>
+                        </select>
+                    </div>
+                    
+                    <div id="lecturerSignupStatus" class="status-message"></div>
+                    
+                    <button id="createLecturerAccount" class="button">
+                        <i class="fas fa-user-plus"></i> Create Account
+                    </button>
+                    
+                    <div class="login-link">
+                        <p>Already have an account? <a href="#" id="loginAsLecturer">Login as Lecturer</a></p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Lecturer Login Page -->
+            <div id="lecturerLoginPage" class="page">
+                <div class="page-header">
+                    <h2>Lecturer Login</h2>
+                    <p>Login to your lecturer account</p>
+                </div>
+                
+                <div class="form-container">
+                    <div class="form-group">
+                        <label for="lecturerLoginName">Your Name</label>
+                        <input type="text" id="lecturerLoginName" placeholder="Enter your name">
+                    </div>
+                    
+                    <div id="lecturerLoginStatus" class="status-message"></div>
+                    
+                    <button id="loginLecturerButton" class="button">
+                        <i class="fas fa-sign-in-alt"></i> Login
+                    </button>
+                    
+                    <div class="login-link">
+                        <p>Don't have an account? <a href="#" id="goToLecturerSignupFromLogin">Create Account</a></p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Security Officer Signup Page -->
+            <div id="securitySignupPage" class="page">
+                <div class="page-header">
+                    <h2>Security Officer Registration</h2>
+                    <p>Create your security officer account</p>
+                </div>
+                
+                <div class="form-container">
+                    <div class="form-group">
+                        <label for="securityName">Full Name</label>
+                        <input type="text" id="securityName" placeholder="Enter your full name">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="securityId">Security ID Number</label>
+                        <input type="text" id="securityId" placeholder="Enter your security ID">
+                    </div>
+                    
+                    <div id="securitySignupStatus" class="status-message"></div>
+                    
+                    <button id="createSecurityAccount" class="button">
+                        <i class="fas fa-user-plus"></i> Create Account
+                    </button>
+                    
+                    <div class="login-link">
+                        <p>Already have an account? <a href="#" id="loginAsSecurity">Login as Security Officer</a></p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Security Officer Login Page -->
+            <div id="securityLoginPage" class="page">
+                <div class="page-header">
+                    <h2>Security Officer Login</h2>
+                    <p>Login to your security officer account</p>
+                </div>
+                
+                <div class="form-container">
+                    <div class="form-group">
+                        <label for="securityLoginName">Your Name</label>
+                        <input type="text" id="securityLoginName" placeholder="Enter your name">
+                    </div>
+                    
+                    <div id="securityLoginStatus" class="status-message"></div>
+                    
+                    <button id="loginSecurityButton" class="button">
+                        <i class="fas fa-sign-in-alt"></i> Login
+                    </button>
+                    
+                    <div class="login-link">
+                        <p>Don't have an account? <a href="#" id="goToSecuritySignupFromLogin">Create Account</a></p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Lecturer Dashboard -->
+            <div id="lecturerDashboard" class="page">
+                <div class="dashboard-header">
+                    <div class="user-info">
+                        <div class="avatar" id="lecturerAvatar">L</div>
+                        <div>
+                            <h3 id="lecturerWelcome">Welcome, Lecturer</h3>
+                            <p id="lecturerDeptInfo">Department: </p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="dashboard-section">
+                    <h3><i class="fas fa-qrcode"></i> Your Parking QR Code</h3>
+                    <p class="section-subtitle">Show this QR code to security when entering or exiting campus</p>
+                    
+                    <div class="qr-container">
+                        <div id="qrCode"></div>
+                        <p class="qr-id">QR Code ID: <span id="qrCodeId">Loading...</span></p>
+                    </div>
+                </div>
+                
+                <div id="lecturerParkingSlot" class="parking-slot-card">
+                    <div class="slot-header">
+                        <h4><i class="fas fa-parking"></i> Assigned Parking Slot</h4>
+                        <div class="slot-status" id="slotStatus">Not Assigned</div>
+                    </div>
+                    <div class="slot-number" id="lecturerSlotNumber">-</div>
+                    <p class="slot-time" id="slotTime">No active parking session</p>
+                </div>
+                
+                <div class="scan-success-message" id="scanSuccessMessage" style="display: none;">
+                    <div class="success-icon">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <div class="success-content">
+                        <h4>Parking Assigned Successfully!</h4>
+                        <p>Your parking slot has been assigned. Proceed to park your vehicle.</p>
+                    </div>
+                </div>
+                
+                <div class="dashboard-section">
+                    <h3><i class="fas fa-map-marker-alt"></i> Parking Slot Availability</h3>
+                    <div class="parking-slots-container" id="lecturerSlotsDisplay">
+                        <!-- Parking slots will be displayed here -->
+                    </div>
+                </div>
+                
+                <div class="quick-actions">
+                    <button class="action-button" id="refreshParking">
+                        <i class="fas fa-sync-alt"></i>
+                        <span>Refresh Status</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Security Officer Dashboard -->
+            <div id="securityDashboard" class="page">
+                <div class="dashboard-header">
+                    <div class="user-info">
+                        <div class="avatar" id="securityAvatar">S</div>
+                        <div>
+                            <h3 id="securityWelcome">Welcome, Security Officer</h3>
+                            <p id="securityIdInfo">Security ID: </p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="dashboard-section">
+                    <h3><i class="fas fa-camera"></i> QR Code Scanner</h3>
+                    <p class="section-subtitle">Scan lecturer QR codes to assign or release parking slots</p>
+                    
+                    <!-- WebView Warning (Hidden by default) -->
+                    <div class="webview-warning" id="webviewWarning" style="display: none;">
+                        <h4><i class="fas fa-exclamation-triangle"></i> Camera Not Available</h4>
+                        <p>This app was converted to APK using a basic converter. Camera access requires proper native app development.</p>
+                        
+                        <ul>
+                            <li><strong>For testing:</strong> Use the web version in Chrome/Safari</li>
+                            <li><strong>For production:</strong> Build with Capacitor or Cordova</li>
+                            <li><strong>Manual entry:</strong> Use the manual QR code entry below</li>
+                        </ul>
+                        
+                        <div class="action-buttons">
+                            <button class="button" onclick="openWebVersion()" style="background: #1a2980;">
+                                <i class="fas fa-external-link-alt"></i> Open Web Version
+                            </button>
+                            <button class="button secondary" onclick="showNativeInstructions()" style="background: #27ae60;">
+                                <i class="fas fa-code"></i> Build Instructions
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="camera-permission" id="cameraPermissionMessage" style="display: none;">
+                        <i class="fas fa-camera"></i>
+                        <span>Camera access is required for QR scanning. Please allow camera permissions when prompted.</span>
+                    </div>
+                    
+                    <div id="qrScanner"></div>
+                    
+                    <div class="scanner-placeholder" id="scannerPlaceholder">
+                        <i class="fas fa-camera"></i>
+                        <p>Camera will activate when you start scanning</p>
+                    </div>
+                    
+                    <div class="scanner-buttons">
+                        <button id="startScanner" class="button scanner-button">
+                            <i class="fas fa-play"></i> Start Scanner
+                        </button>
+                        <button id="stopScanner" class="button secondary scanner-button" style="display:none;">
+                            <i class="fas fa-stop"></i> Stop Scanner
+                        </button>
+                    </div>
+                    
+                    <div id="scanResult" class="scan-result" style="display: none;">
+                        <div class="scan-success-icon">
+                            <i class="fas fa-check-circle"></i>
+                        </div>
+                        <div class="scan-result-content">
+                            <h4 id="scanResultTitle">Success!</h4>
+                            <p id="scanResultMessage">QR Code processed successfully</p>
+                        </div>
+                    </div>
+                    
+                    <div class="manual-scan">
+                        <h4>Or enter QR code manually:</h4>
+                        <div class="input-group">
+                            <input type="text" id="manualQrInput" placeholder="Enter QR code ID">
+                            <button id="manualScanButton" class="button">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="dashboard-section">
+                    <h3><i class="fas fa-map-marker-alt"></i> Parking Slot Status</h3>
+                    <div class="parking-slots-container" id="securitySlotsDisplay">
+                        <!-- Parking slots will be displayed here -->
+                    </div>
+                </div>
+                
+                <div class="quick-stats">
+                    <div class="stat-card">
+                        <div class="stat-icon available">
+                            <i class="fas fa-car"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h4 id="availableSlots">15</h4>
+                            <p>Available Slots</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon occupied">
+                            <i class="fas fa-car"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h4 id="occupiedSlots">5</h4>
+                            <p>Occupied Slots</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Account Details Page -->
+            <div id="accountDetailsPage" class="page">
+                <div class="page-header">
+                    <h2>Account Details</h2>
+                    <p>View your account information</p>
+                </div>
+                
+                <div class="account-details">
+                    <div class="account-card">
+                        <div class="account-avatar" id="accountAvatar">U</div>
+                        <div class="account-info">
+                            <h3 id="accountName">Guest User</h3>
+                            <p id="accountRole">No role selected</p>
+                        </div>
+                    </div>
+                    
+                    <div class="info-section">
+                        <h3>Personal Information</h3>
+                        <div class="info-item">
+                            <span class="info-label">Name:</span>
+                            <span class="info-value" id="infoName">-</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Role:</span>
+                            <span class="info-value" id="infoRole">-</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Department:</span>
+                            <span class="info-value" id="infoDepartment">-</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Security ID:</span>
+                            <span class="info-value" id="infoSecurityId">-</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">QR Code ID:</span>
+                            <span class="info-value" id="infoQrCode">-</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Account Created:</span>
+                            <span class="info-value" id="infoCreated">-</span>
+                        </div>
+                    </div>
+                    
+                    <div class="info-section">
+                        <h3>Parking Information</h3>
+                        <div class="info-item">
+                            <span class="info-label">Current Slot:</span>
+                            <span class="info-value" id="infoCurrentSlot">-</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Last Entry:</span>
+                            <span class="info-value" id="infoLastEntry">-</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Last Exit:</span>
+                            <span class="info-value" id="infoLastExit">-</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- About System Page -->
+            <div id="aboutSystemPage" class="page">
+                <div class="page-header">
+                    <h2>About UoM Parking System</h2>
+                    <p>University of Moratuwa Parking Management</p>
+                </div>
+                
+                <div class="about-content">
+                    <div class="about-card">
+                        <div class="about-icon">
+                            <i class="fas fa-university"></i>
+                        </div>
+                        <h3>UoM Parking Management</h3>
+                        <p>An intelligent parking management system designed for University of Moratuwa campus.</p>
+                    </div>
+                    
+                    <div class="about-section">
+                        <h3>System Features</h3>
+                        <ul class="features-list">
+                            <li><i class="fas fa-check"></i> Easy lecturer registration with any name</li>
+                            <li><i class="fas fa-check"></i> Security officer account creation</li>
+                            <li><i class="fas fa-check"></i> Unique QR code generation for each lecturer</li>
+                            <li><i class="fas fa-check"></i> Mobile camera QR code scanning</li>
+                            <li><i class="fas fa-check"></i> Real-time parking slot allocation and release</li>
+                            <li><i class="fas fa-check"></i> Visual confirmation for successful operations</li>
+                            <li><i class="fas fa-check"></i> Mobile-optimized interface</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="about-section">
+                        <h3>How It Works</h3>
+                        <div class="workflow">
+                            <div class="workflow-step">
+                                <div class="step-number">1</div>
+                                <div class="step-content">
+                                    <h4>Lecturer Registration</h4>
+                                    <p>Lecturers create accounts with their name and department.</p>
+                                </div>
+                            </div>
+                            <div class="workflow-step">
+                                <div class="step-number">2</div>
+                                <div class="step-content">
+                                    <h4>QR Code Generation</h4>
+                                    <p>Each lecturer receives a unique QR code for parking access.</p>
+                                </div>
+                            </div>
+                            <div class="workflow-step">
+                                <div class="step-number">3</div>
+                                <div class="step-content">
+                                    <h4>Campus Entry</h4>
+                                    <p>Lecturer shows QR code to security officer. Officer scans code using mobile camera and system assigns available parking slot.</p>
+                                </div>
+                            </div>
+                            <div class="workflow-step">
+                                <div class="step-number">4</div>
+                                <div class="step-content">
+                                    <h4>Campus Exit</h4>
+                                    <p>Lecturer shows QR code again when leaving. Officer scans code and system releases the parking slot.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="about-section contact-info">
+                        <h3>Contact & Support</h3>
+                        <p><i class="fas fa-envelope"></i> parking@uom.lk</p>
+                        <p><i class="fas fa-phone"></i> +94 11 265 0301</p>
+                        <p><i class="fas fa-map-marker-alt"></i> Parking Administration, University of Moratuwa</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- External Libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
+    <script src="https://unpkg.com/html5-qrcode"></script>
+    
+    <!-- Main App Script -->
+    <script src="app.js"></script>
+    
+    <!-- PWA Installation Script -->
+    <script>
+        // Register Service Worker
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('service-worker.js')
+                    .then(registration => {
+                        console.log('✅ Service Worker registered:', registration);
+                    })
+                    .catch(error => {
+                        console.log('❌ Service Worker registration failed:', error);
+                    });
+            });
+        }
+
+        // Show PWA Installation Prompt
+        let deferredPrompt;
+        const installButton = document.createElement('button');
+        
+        window.addEventListener('beforeinstallprompt', (e) => {
+            e.preventDefault();
+            deferredPrompt = e;
+            
+            // Show install button
+            installButton.style.display = 'block';
+            installButton.textContent = '📱 Install App';
+            installButton.style.position = 'fixed';
+            installButton.style.bottom = '20px';
+            installButton.style.right = '20px';
+            installButton.style.zIndex = '1000';
+            installButton.style.padding = '10px 20px';
+            installButton.style.background = '#1a2980';
+            installButton.style.color = 'white';
+            installButton.style.border = 'none';
+            installButton.style.borderRadius = '20px';
+            installButton.style.cursor = 'pointer';
+            installButton.style.boxShadow = '0 4px 10px rgba(0,0,0,0.3)';
+            
+            document.body.appendChild(installButton);
+            
+            installButton.addEventListener('click', () => {
+                deferredPrompt.prompt();
+                deferredPrompt.userChoice.then((choiceResult) => {
+                    if (choiceResult.outcome === 'accepted') {
+                        console.log('✅ User accepted install');
+                    } else {
+                        console.log('❌ User dismissed install');
+                    }
+                    deferredPrompt = null;
+                });
+            });
+            
+            // Hide the button after 10 seconds
+            setTimeout(() => {
+                installButton.style.display = 'none';
+            }, 10000);
+        });
+
+        // Detect if app is running in standalone mode
+        window.addEventListener('load', () => {
+            if (window.matchMedia('(display-mode: standalone)').matches) {
+                console.log('📱 App is running in standalone mode');
+            }
+        });
+    </script>
+</body>
+</html>
