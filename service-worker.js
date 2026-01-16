@@ -17,9 +17,9 @@ const PRECACHE_RESOURCES = [
   'https://unpkg.com/html5-qrcode',
   
   // Icons
-  'https://img.icons8.com/color/96/000000/parking.png',
-  'https://img.icons8.com/color/192/000000/parking.png',
-  'https://img.icons8.com/color/512/000000/parking.png'
+  'favicon.ico',
+  'i1.png',
+  'i2.png'
 ];
 
 // Install event - precache resources
@@ -244,4 +244,5 @@ self.addEventListener('message', event => {
   if (event.data && event.data.type === 'SKIP_WAITING') {
     self.skipWaiting();
   }
+
 });
