@@ -17,7 +17,7 @@
     {
       "src": "/i1.png",
       "sizes": "192x192",
-      "type": "png",
+      "type": "image/png",
       "purpose": "any maskable"
     },
     
@@ -25,7 +25,7 @@
     {
       "src": "/i2.png",
       "sizes": "512x512",
-      "type": "png",
+      "type": "image/png",
       "purpose": "any maskable"
     }
   ],
@@ -106,6 +106,7 @@
     }
   }
 }
+
 
 
 
