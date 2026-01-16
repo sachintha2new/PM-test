@@ -30,22 +30,7 @@
     }
   ],
   
-  "screenshots": [
-    {
-      "src": "https://via.placeholder.com/720x1280/1a2980/FFFFFF?text=UoM+Parking+App",
-      "sizes": "720x1280",
-      "type": "image/png",
-      "form_factor": "narrow",
-      "label": "Parking App Dashboard"
-    },
-    {
-      "src": "https://via.placeholder.com/1280x720/26d0ce/FFFFFF?text=QR+Code+Scanner",
-      "sizes": "1280x720",
-      "type": "image/png",
-      "form_factor": "wide",
-      "label": "QR Code Scanner"
-    }
-  ],
+  
   
   "shortcuts": [
     {
@@ -106,3 +91,4 @@
     }
   }
 }
+
