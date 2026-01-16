@@ -7,14 +7,10 @@ const PRECACHE_RESOURCES = [
   '/',
   '/index.html',
   '/style.css',
-  '/script.js',
+  '/app.js',
   '/manifest.json',
   '/service-worker.js',
   
-  // External resources (cache these too)
-  'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css',
-  'https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js',
-  'https://unpkg.com/html5-qrcode',
   
   // Icons
   '/favicon.ico',
@@ -155,13 +151,13 @@ self.addEventListener('push', event => {
   const data = event.data ? event.data.json() : {
     title: 'UoM Parking',
     body: 'You have a new notification',
-    icon: 'favicon.ico'
+    icon: '/favicon.ico'
   };
   
   const options = {
     body: data.body,
     icon: data.icon || 'favicon.ico',
-    badge: 'favicon.ico',
+    badge: '/favicon.ico',
     vibrate: [100, 50, 100],
     data: {
       url: data.url || '/',
@@ -205,11 +201,7 @@ self.addEventListener('notificationclick', event => {
 });
 
 // Periodically update cache in background
-self.addEventListener('periodicsync', event => {
-  if (event.tag === 'update-cache') {
-    event.waitUntil(updateCache());
-  }
-});
+
 
 // Helper function for background sync
 function syncParkingData() {
@@ -246,5 +238,6 @@ self.addEventListener('message', event => {
   }
 
 });
+
 
 
