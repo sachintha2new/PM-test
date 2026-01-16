@@ -155,13 +155,13 @@ self.addEventListener('push', event => {
   const data = event.data ? event.data.json() : {
     title: 'UoM Parking',
     body: 'You have a new notification',
-    icon: 'https://img.icons8.com/color/96/000000/parking.png'
+    icon: 'favicon.ico'
   };
   
   const options = {
     body: data.body,
-    icon: data.icon || 'https://img.icons8.com/color/96/000000/parking.png',
-    badge: 'https://img.icons8.com/color/96/000000/parking.png',
+    icon: data.icon || 'favicon.ico',
+    badge: 'favicon.ico',
     vibrate: [100, 50, 100],
     data: {
       url: data.url || '/',
@@ -246,3 +246,4 @@ self.addEventListener('message', event => {
   }
 
 });
+
