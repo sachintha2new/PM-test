@@ -15,7 +15,7 @@
   
   "icons": [
     {
-      "src": "i1.png",
+      "src": "/i1.png",
       "sizes": "192x192",
       "type": "png",
       "purpose": "any maskable"
@@ -23,7 +23,7 @@
     
     
     {
-      "src": "i2.png",
+      "src": "/i2.png",
       "sizes": "512x512",
       "type": "png",
       "purpose": "any maskable"
@@ -32,14 +32,14 @@
   
   "screenshots": [
     {
-      "src": "i3.png",
+      "src": "/i3.png",
       "sizes": "720x1280",
       "type": "image/png",
       "form_factor": "narrow",
       "label": "Parking App Dashboard"
     },
     {
-      "src": "i4.png",
+      "src": "/i4.png",
       "sizes": "1280x720",
       "type": "image/png",
       "form_factor": "wide",
@@ -106,6 +106,7 @@
     }
   }
 }
+
 
 
 
