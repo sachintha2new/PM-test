@@ -41,7 +41,7 @@
     {
       "src": "/i4.png",
       "sizes": "1280x720",
-      "type": "image/png",
+      "type": "png",
       "form_factor": "wide",
       "label": "QR Code Scanner"
     }
@@ -106,6 +106,7 @@
     }
   }
 }
+
 
 
 
