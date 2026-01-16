@@ -17,9 +17,9 @@ const PRECACHE_RESOURCES = [
   'https://unpkg.com/html5-qrcode',
   
   // Icons
-  'favicon.ico',
-  'i1.png',
-  'i2.png'
+  '/favicon.ico',
+  '/i1.png',
+  '/i2.png'
 ];
 
 // Install event - precache resources
@@ -246,4 +246,5 @@ self.addEventListener('message', event => {
   }
 
 });
+
 
