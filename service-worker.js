@@ -13,9 +13,9 @@ const PRECACHE_RESOURCES = [
   
   
   // Icons
-  '/favicon.ico',
-  '/i1.png',
-  '/i2.png'
+  'https://github.com/sachintha2new/PM-test/blob/main/icons/favicon-3.png',
+  'https://github.com/sachintha2new/PM-test/blob/main/icons/i1.png',
+  'https://github.com/sachintha2new/PM-test/blob/main/icons/i2.png'
 ];
 
 // Install event - precache resources
@@ -238,6 +238,7 @@ self.addEventListener('message', event => {
   }
 
 });
+
 
 
 
