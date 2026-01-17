@@ -1,4 +1,4 @@
-{"index":"index.html",
+{
   "name": "UoM Parking Management",
   "short_name": "UoM Parking",
   "description": "University of Moratuwa Parking Management System for lecturers and security officers",
@@ -107,6 +107,7 @@
     }
   }
 }
+
 
 
 
