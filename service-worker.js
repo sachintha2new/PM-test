@@ -157,7 +157,7 @@ self.addEventListener('push', event => {
   
   const options = {
     body: data.body,
-    icon: data.icon || 'favicon.ico',
+    icon: data.icon || 'https://github.com/sachintha2new/PM-test/blob/main/icons/favicon-3.png',
     badge: '/favicon.ico',
     vibrate: [100, 50, 100],
     data: {
@@ -239,6 +239,7 @@ self.addEventListener('message', event => {
   }
 
 });
+
 
 
 
