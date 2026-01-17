@@ -151,7 +151,7 @@ self.addEventListener('push', event => {
   const data = event.data ? event.data.json() : {
     title: 'UoM Parking',
     body: 'You have a new notification',
-    icon: '/favicon.ico'
+    icon: 'https://github.com/sachintha2new/PM-test/blob/main/icons/favicon-3.png'
   };
   
   const options = {
@@ -238,6 +238,7 @@ self.addEventListener('message', event => {
   }
 
 });
+
 
 
 
