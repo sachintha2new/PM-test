@@ -15,7 +15,7 @@
   
   "icons": [
     {
-      "src": "https://github.com/sachintha2new/PM-test/blob/main/icons/i1.png",
+      "src": "https://raw.githubusercontent.com/sachintha2new/PM-test/main/icons/i1.png",
       "sizes": "192x192",
       "type": "image/png",
       "purpose": "any maskable"
@@ -107,6 +107,7 @@
     }
   }
 }
+
 
 
 
