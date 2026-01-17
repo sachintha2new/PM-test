@@ -41,7 +41,7 @@
     {
       "src": "https://github.com/sachintha2new/PM-test/blob/main/icons/i4.png?raw=true",
       "sizes": "1280x720",
-      "type": "png",
+      "type": "image/png",
       "form_factor": "wide",
       "label": "QR Code Scanner"
     }
@@ -107,6 +107,7 @@
     }
   }
 }
+
 
 
 
