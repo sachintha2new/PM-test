@@ -23,7 +23,7 @@
     
     
     {
-      "src": "https://github.com/sachintha2new/PM-test/blob/main/icons/i2.png",
+      "src": "https://github.com/sachintha2new/PM-test/blob/main/icons/i2.png?raw=true",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any maskable"
@@ -32,14 +32,14 @@
   
   "screenshots": [
     {
-      "src": "https://github.com/sachintha2new/PM-test/blob/main/icons/i3.png",
+      "src": "https://github.com/sachintha2new/PM-test/blob/main/icons/i3.png?raw=true",
       "sizes": "720x1280",
       "type": "image/png",
       "form_factor": "narrow",
       "label": "Parking App Dashboard"
     },
     {
-      "src": "https://github.com/sachintha2new/PM-test/blob/main/icons/i4.png",
+      "src": "https://github.com/sachintha2new/PM-test/blob/main/icons/i4.png?raw=true",
       "sizes": "1280x720",
       "type": "png",
       "form_factor": "wide",
@@ -107,6 +107,7 @@
     }
   }
 }
+
 
 
 
