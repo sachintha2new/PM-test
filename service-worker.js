@@ -10,11 +10,11 @@ const PRECACHE_RESOURCES = [
   '/app.js',
   '/manifest.json',
   '/service-worker.js',
-  '/icons',
+  
   
   
   // Icons
-  'https://github.com/sachintha2new/PM-test/blob/main/icons/favicon-3.png',
+  'https://raw.githubusercontent.com/sachintha2new/PM-test/main/icons/favicon-3.png',
   'https://github.com/sachintha2new/PM-test/blob/main/icons/i1.png',
   'https://github.com/sachintha2new/PM-test/blob/main/icons/i2.png'
 ];
@@ -239,6 +239,7 @@ self.addEventListener('message', event => {
   }
 
 });
+
 
 
 
