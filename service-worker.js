@@ -10,6 +10,7 @@ const PRECACHE_RESOURCES = [
   '/app.js',
   '/manifest.json',
   '/service-worker.js',
+  '/icons',
   
   
   // Icons
@@ -238,6 +239,7 @@ self.addEventListener('message', event => {
   }
 
 });
+
 
 
 
