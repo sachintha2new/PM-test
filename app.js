@@ -122,7 +122,7 @@ function showWebViewWarning() {
 // Open web version
 function openWebVersion() {
     alert("For best experience, please open this URL in Chrome/Safari:\n\nhttps://uom-parking.web.app\n\nOr save as PWA (Add to Home Screen)");
-    window.open("https://uom-parking.web.app", "_blank");
+    window.open("https://sachintha2new.github.io/PM-test/", "_blank");
 }
 
 // Show native app building instructions
@@ -1087,4 +1087,5 @@ function clearStatusMessages() {
 
 // Make functions globally accessible for onclick handlers
 window.openWebVersion = openWebVersion;
+
 window.showNativeInstructions = showNativeInstructions;
