@@ -1,3 +1,51 @@
+// Add these new functions at the beginning, after your variable declarations:
+
+// ===== NEW FUNCTIONS =====
+
+// Detect PWA mode
+function detectPWAMode() {
+    // Check if running in standalone (installed) mode
+    if (window.matchMedia('(display-mode: standalone)').matches || 
+        window.navigator.standalone ||
+        document.referrer.includes('android-app://')) {
+        console.log("Running in PWA/installed mode");
+        return true;
+    }
+    return false;
+}
+
+// Test camera access
+async function testCameraAccess() {
+    try {
+        const stream = await navigator.mediaDevices.getUserMedia({ video: true });
+        console.log("Camera access SUCCESSFUL");
+        stream.getTracks().forEach(track => track.stop());
+        return true;
+    } catch (error) {
+        console.error("Camera access FAILED:", error);
+        return false;
+    }
+}
+
+// Request camera for PWA
+function requestCameraForPWA() {
+    if (detectPWAMode() && navigator.platform.match(/iPhone|iPod|iPad/)) {
+        // iOS PWA workaround: open in browser
+        const shouldOpen = confirm("iOS PWA has camera restrictions. Open in Safari for better camera support?");
+        if (shouldOpen) {
+            window.open(window.location.href, '_blank');
+            return true;
+        }
+    }
+    return false;
+}
+
+// ===== EXISTING CODE CONTINUES BELOW =====
+
+// Your existing detectWebView function (update it)
+function detectWebView() {
+    // Your existing code plus the new PWA detection...
+}
 // Parking slots simulation
 let parkingSlots = Array.from({ length: 25 }, (_, i) => ({
     number: i + 1,
@@ -9,6 +57,9 @@ let parkingSlots = Array.from({ length: 25 }, (_, i) => ({
 
 // Parking history simulation
 let parkingHistory = [];
+
+
+
 
 // Application state
 let currentUser = null;
@@ -1089,4 +1140,5 @@ function clearStatusMessages() {
 window.openWebVersion = openWebVersion;
 
 window.showNativeInstructions = showNativeInstructions;
+
 
