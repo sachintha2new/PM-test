@@ -2,8 +2,8 @@
   "name": "UoM Parking Management",
   "short_name": "UoM Parking",
   "description": "University of Moratuwa Parking Management System for lecturers and security officers",
-  "start_url": "/index.html",
-  "scope": "/",
+  "start_url": "/PM-test/",
+  "scope": "/PM-test/",
   "display": "standalone",
   "display_override": ["standalone", "minimal-ui"],
   "orientation": "portrait",
@@ -12,6 +12,7 @@
   "categories": ["business", "productivity", "utilities"],
   "lang": "en",
   "dir": "ltr",
+  "id": "/PM-test/",
   
   "icons": [
     {
@@ -97,7 +98,7 @@
   ],
   
   "share_target": {
-    "action": "/",
+    "action": "/PM-test/",
     "method": "GET",
     "enctype": "application/x-www-form-urlencoded",
     "params": {
@@ -107,6 +108,7 @@
     }
   }
 }
+
 
 
 
