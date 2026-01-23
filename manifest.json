@@ -75,7 +75,7 @@
       "url": "/#welcomePage",
       "icons": [
         {
-          "src": "https://raw.githubusercontent.com/sachintha2new/PM-test/refs/heads/main/icons/icon_96x96.png",
+          "src": "/PM-test/refs/heads/main/icons/icon_96x96.png",
           "sizes": "96x96"
         }
       ]
@@ -100,6 +100,7 @@
     }
   }
 }
+
 
 
 
