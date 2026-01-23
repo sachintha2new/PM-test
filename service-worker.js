@@ -14,9 +14,9 @@ const PRECACHE_RESOURCES = [
   
   
   // Icons
-  'https://raw.githubusercontent.com/sachintha2new/PM-test/main/icons/favicon-3.png',
-  'https://github.com/sachintha2new/PM-test/blob/main/icons/i1.png',
-  'https://github.com/sachintha2new/PM-test/blob/main/icons/i2.png'
+  'https://raw.githubusercontent.com/sachintha2new/PM-test/refs/heads/main/icons/favicon-3.png',
+  'https://raw.githubusercontent.com/sachintha2new/PM-test/refs/heads/main/icons/i1.png',
+  'https://raw.githubusercontent.com/sachintha2new/PM-test/refs/heads/main/icons/i2.png'
 ];
 
 // Install event - precache resources
@@ -166,12 +166,12 @@ self.addEventListener('push', event => {
   const data = event.data ? event.data.json() : {
     title: 'UoM Parking',
     body: 'You have a new notification',
-    icon: 'https://github.com/sachintha2new/PM-test/blob/main/icons/favicon-3.png'
+    icon: 'https://raw.githubusercontent.com/sachintha2new/PM-test/refs/heads/main/icons/favicon-3.png'
   };
   
   const options = {
     body: data.body,
-    icon: data.icon || 'https://github.com/sachintha2new/PM-test/blob/main/icons/favicon-3.png',
+    icon: data.icon || 'https://raw.githubusercontent.com/sachintha2new/PM-test/refs/heads/main/icons/favicon-3.png',
     badge: '/favicon.ico',
     vibrate: [100, 50, 100],
     data: {
@@ -253,6 +253,7 @@ self.addEventListener('message', event => {
   }
 
 });
+
 
 
 
