@@ -27,13 +27,27 @@ self.addEventListener('install', event => {
     caches.open(CACHE_NAME)
       .then(cache => {
         console.log('Service Worker: Caching app shell and content');
-        return cache.addAll(PRECACHE_RESOURCES)
-          .then(() => {
-            console.log('All resources cached successfully');
+        // Use Promise.allSettled to allow some resources to fail without
+        // preventing the entire service worker installation.
+        return Promise.allSettled(
+          PRECACHE_RESOURCES.map(url => {
+            return cache.add(url).catch(error => {
+              console.warn(`Service Worker: Failed to cache ${url}`, error);
+              // Optionally re-throw if you still want the overall promise to reject
+              // or handle it more specifically.
+            });
           })
-          .catch(error => {
-            console.error('Failed to cache resources:', error);
+        )
+        .then(results => {
+          results.forEach(result => {
+            if (result.status === 'rejected') {
+              console.error('Service Worker: One or more resources failed to cache', result.reason);
+            }
           });
+          console.log('Service Worker: Pre-caching attempt complete.');
+          // If you want the install to fail even with some warnings, you can
+          // check results here and reject the outer promise.
+        });
       })
       .then(() => self.skipWaiting())
   );
@@ -239,6 +253,7 @@ self.addEventListener('message', event => {
   }
 
 });
+
 
 
 
