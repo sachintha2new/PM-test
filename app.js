@@ -121,7 +121,7 @@ function showWebViewWarning() {
 
 // Open web version
 function openWebVersion() {
-    alert("For best experience, please open this URL in Chrome/Safari:\n\nhttps://uom-parking.web.app\n\nOr save as PWA (Add to Home Screen)");
+    alert("For best experience, please open this URL in Chrome/Safari:\n\nhttps://sachintha2new.github.io/PM-test\n\nOr save as PWA (Add to Home Screen)");
     window.open("https://sachintha2new.github.io/PM-test/", "_blank");
 }
 
@@ -1089,3 +1089,4 @@ function clearStatusMessages() {
 window.openWebVersion = openWebVersion;
 
 window.showNativeInstructions = showNativeInstructions;
+
