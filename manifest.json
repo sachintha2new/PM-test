@@ -13,7 +13,6 @@
   "lang": "en",
   "dir": "ltr",
   "id": "/PM-test/",
-  
   "icons": [
     {
       "src": "https://github.com/sachintha2new/PM-test/blob/main/icons/i1.png?raw=true",
@@ -21,8 +20,6 @@
       "type": "image/png",
       "purpose": "any maskable"
     },
-    
-    
     {
       "src": "https://github.com/sachintha2new/PM-test/blob/main/icons/i2.png?raw=true",
       "sizes": "512x512",
@@ -30,7 +27,6 @@
       "purpose": "any maskable"
     }
   ],
-  
   "screenshots": [
     {
       "src": "https://github.com/sachintha2new/PM-test/blob/main/icons/i3.png?raw=true",
@@ -47,7 +43,6 @@
       "label": "QR Code Scanner"
     }
   ],
-  
   "shortcuts": [
     {
       "name": "Scan QR Code",
@@ -86,17 +81,14 @@
       ]
     }
   ],
-  
   "related_applications": [],
   "prefer_related_applications": false,
-  
   "protocol_handlers": [
     {
       "protocol": "web+parking",
       "url": "/?parking=%s"
     }
   ],
-  
   "share_target": {
     "action": "/PM-test/",
     "method": "GET",
@@ -108,41 +100,3 @@
     }
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
