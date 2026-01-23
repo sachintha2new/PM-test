@@ -97,7 +97,7 @@
   ],
   
   "share_target": {
-    "action": "/PM-test/",
+    "action": "https://sachintha2new.github.io/PM-test/",
     "method": "GET",
     "enctype": "application/x-www-form-urlencoded",
     "params": {
@@ -107,6 +107,7 @@
     }
   }
 }
+
 
 
 
